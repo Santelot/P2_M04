@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P2-M04</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P2-M04</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión de Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('mission_review')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión de Misión</span>
+            <span>⏰ Tiempo: N/A</span>
+        </div>
+        <div class="subtitle">Revisión de los materiales necesarios</div>
+        <div class="summary">Proyectar la diapositiva "Materiales" y verificar que todo esté listo para la clase.</div>
+    </div>
+    <div id="mission_review" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1: Proyectar la diapositiva 1 "Materiales". Verificar que los estudiantes tengan acceso a Adobe Express Animate from Audio, correo institucional, las Magic Tablets, y un micrófono para los dispositivos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">—</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('gnius_club_welcome')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Bienvenida y preparación para la misión</div>
+        <div class="summary">Dar la bienvenida a los estudiantes y establecer los objetivos del día.</div>
+    </div>
+    <div id="gnius_club_welcome" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Hola, Genios! 🌟 Hoy vamos a descubrir cómo crear animaciones que harán que nuestras historias cobren vida. ¿Están listos para la aventura? ¡Vamos a comenzar nuestra misión!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Cómo están hoy? Si están emocionados por aprender, estiren sus brazos hacia adelante. Si necesitan un poco más de energía, crucen los brazos. ¡Vamos a ver cómo se sienten!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 4 "Ritual de Agradecimiento".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Juntamos nuestras manos para agradecer todo lo que vamos a aprender hoy. ¡Gracias por ser parte de esta misión, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a aprender a crear animaciones para nuestras historias usando Adobe Express Animate from Audio. Nuestros objetivos son: 1) Grabar y animar con nuestra voz, y 2) Personalizar personajes y fondos para hacer nuestra historia más interesante."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2: Innovación del Día -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovation_day')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Exploración de cómo las animaciones pueden dar vida a las historias</div>
+        <div class="summary">Introducir el concepto de animaciones y cómo transforman las historias.</div>
+    </div>
+    <div id="innovation_day" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 6 "Innovación del Día".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a ver cómo las animaciones pueden transformar nuestras historias en algo visualmente increíble. Con Adobe Express Animate from Audio, nuestras voces se convertirán en animaciones vivas."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar un video corto que muestre un ejemplo de cómo se pueden crear animaciones usando la herramienta.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Miren este video que muestra cómo, con solo nuestra voz, podemos crear animaciones completas. Fíjense bien en cómo el personaje se mueve y habla con la voz grabada."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 7 "Impacto de la Innovación".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Con esta tecnología, no solo narramos nuestras historias, sino que las animamos, convirtiendo cada palabra en una acción visual. ¡Es una manera emocionante de compartir lo que imaginamos!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Reflexionar y pedir a los estudiantes que compartan ideas sobre cómo usarían la herramienta para sus proyectos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, piensen en sus propias historias. ¿Cómo podrían usar esta herramienta para dar vida a sus personajes? ¿Qué tipo de animación les gustaría crear con su propia voz?"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3: Brain Gym -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym</span>
+            <span>⏰ Tiempo: 11.5 minutos</span>
+        </div>
+        <div class="subtitle">Introducción y uso de la herramienta Adobe Express Animate from Audio</div>
+        <div class="summary">Explicación paso a paso de cómo utilizar la herramienta para crear animaciones.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 9 "Introducción a la Herramienta".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a convertir nuestras voces en animaciones con Adobe Express Animar a partir de un audio. Presten atención a cada paso porque aprenderemos algo divertido que también nos ayudará a mejorar nuestras presentaciones. ¡Vamos a empezar!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Proyectar la diapositiva 10 "Acceso a la Herramienta".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Primero, abrimos el navegador y vamos a Adobe Express. Desde el menú principal, seleccionamos Acciones Rápidas de Video y luego animar a partir de audio. Aquí es donde podemos empezar a crear nuestras animaciones."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar la diapositiva 11 "Selecciona tu Personaje".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora elegimos un personaje que se moverá con nuestra voz. Hay opciones como animales, personas, e incluso robots. ¡Elijan el que más les guste para que sea su avatar animado!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar la diapositiva 12 "Selecciona el Fondo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Además del personaje, podemos elegir un fondo para nuestra animación. Hay paisajes, fondos urbanos, y si prefieren, también pueden subir una imagen propia desde su computadora."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar la diapositiva 13 "Grabar Audio".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora vamos a grabar nuestra presentación. Digan su nombre, cuántos años tienen, qué les gusta hacer en su tiempo libre y cuál es su clase favorita. Hablen con claridad para que su personaje se anime bien."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1.5 minutos): Explicar el Easter Egg durante la grabación de la presentación personal.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Mientras graban su voz, les cuento algo interesante: ¿sabían que la primera película animada de Disney fue 'Blancanieves y los siete enanitos', que se estrenó en 1937? Fue un gran paso para la animación en todo el mundo."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (2 minutos): Proyectar la diapositiva 14 "Previsualización".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora que tenemos la grabación, pueden ver cómo se mueve su personaje. Si les gusta, pueden descargarla y vamos a introducir nuestro correo institucional o cambiar el fondo o personaje si lo desean."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1 minuto): Proyectar la diapositiva 15 "Objetivo Alcanzado".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, hemos completado nuestro primer objetivo del día! Ya saben cómo grabar una presentación animada usando su propia voz y elegir personajes y fondos. ¡Gran trabajo!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4: State Change -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🧘 Actividad 4: State Change</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicio físico para cambiar de estado y prepararse para la siguiente actividad</div>
+        <div class="summary">Realizar ejercicios físicos para mantenerse activos y enfocados.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 16 "Portada State Change".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Es momento de realizar un pequeño ejercicio para cambiar de estado y prepararnos para lo que viene. ¡Vamos a activar nuestros cuerpos y mentes!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 17 "Instrucciones de State Change".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, estírense hacia el cielo como si fueran un personaje animado gigante. Luego, encojan sus cuerpos como si fueran una pequeña pelotita. Vamos a repetir esto varias veces."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Guiar a los estudiantes a estirarse y encogerse para mantenerse activos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genial! Vamos a hacerlo juntos. Estírense alto, luego encójanse pequeñitos. ¡Eso es! ¡Una vez más!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Explicar cómo el ejercicio ayuda a mantenerse activos y creativos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Este ejercicio nos ayuda a mantener nuestras mentes frescas y activas para que podamos seguir creando. ¡Ahora estamos listos para la siguiente parte de nuestra misión!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5: Team Gnius -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>🤝 Actividad 5: Team Gnius</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Trabajo en equipo para recolectar materiales y prepararse para el reto</div>
+        <div class="summary">Organizarse en parejas y recolectar los materiales necesarios.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 18 "Team Gnius".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Es momento de formar equipos. Esta vez trabajaremos en parejas. Tienen 30 segundos para elegir a su compañero. ¡Adelante!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 19 "Cronómetro - 30 Segundos".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tienen 30 segundos para organizarse. Encuentra a tu compañero para esta misión."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar la diapositiva 20 "Recolecta Materiales".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, elijan un representante de su equipo que pasará a recoger las Magic Tablets y los dispositivos que utilizarán. Tienen un minuto para hacerlo."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 21 "Temporizador - 1 Minuto".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tienen un minuto para recoger todo lo que necesitan para la actividad. ¡Vamos allá!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6: Challenge -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 6: Challenge</span>
+            <span>⏰ Tiempo: 10 minutos</span>
+        </div>
+        <div class="subtitle">Reto de creatividad y desarrollo de la historia animada</div>
+        <div class="summary">Dividir la historia por diálogos y personajes, y escribir los diálogos.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 22 "Portada del Challenge".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Ha llegado el momento del reto del día. Hoy pondremos en práctica nuestra creatividad y lo que hemos aprendido hasta ahora."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Proyectar la diapositiva 23 "Instrucciones del Reto".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"El reto de hoy es escribir la historia de dos personajes que están hablando entre sí sobre un lugar que conocen. Cada vez que un personaje hable, contará como un video, así que tendrán que contar cuántos videos van a grabar."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar la diapositiva 24 "Lluvia de Ideas".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tienen 2 minutos para pensar en equipo: ¿De qué lugar hablarán los personajes? ¿Qué les gusta de ese lugar? Compartan sus ideas antes de escribir."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (3 minutos): Proyectar la diapositiva 25 "Escribir la Historia".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora es momento de escribir su historia. Recuerden que cada vez que un personaje hable, será un video diferente. ¡Escriban los diálogos y cuenten cuántos videos necesitarán!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (3 minutos): Proyectar la diapositiva 26 "Exposición de Historias".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Excelente trabajo! Ahora vamos a escuchar a algunos equipos. Cuando pasen al frente, cuéntenos de su historia y también cuántos videos tendrán que grabar según los diálogos."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7: Easter Egg -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Pregunta sorpresa para evaluar la atención de los estudiantes</div>
+        <div class="summary">Realización de una pregunta oculta en la lección para recompensar a los estudiantes atentos.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 31 "Easter Egg".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Ha llegado el momento del Easter Egg. Como saben, escondimos un dato importante durante la clase. Si prestaron atención, podrían ganarse Mon-e por contestar correctamente."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 32 "Pregunta Easter Egg".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"La pregunta es: ¿Cuál fue la primera película animada de Disney? Levanten la mano si saben la respuesta. Voy a seleccionar a tres estudiantes para que me lo digan al oído, uno por uno."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 33 "Respuesta Correcta".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Correcto, la primera película animada de Disney fue 'Blancanieves y los siete enanitos' en 1937! Felicitaciones a quienes respondieron correctamente, se llevan Mon-e por su atención. ¡Buen trabajo!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8: Honor de Dojo -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏅 Actividad 8: Honor de Dojo</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y cierre de la clase</div>
+        <div class="summary">Reflexionar sobre los aprendizajes de la clase y celebrar los logros de los estudiantes.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 34 "Reflexión y Feedback".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, hicieron un gran trabajo! Antes de terminar, me gustaría escuchar lo que más les gustó de la clase de hoy. ¿Qué aprendieron? ¿Qué parte fue su favorita?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Felicitar a los estudiantes por su esfuerzo y creatividad.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy aprendimos mucho sobre cómo crear nuestras propias animaciones y contar historias con personajes. Quiero reconocer a todos por su esfuerzo y creatividad. ¡Genios, están haciendo un trabajo increíble!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Proyectar la diapositiva 36 "Honrar el Espacio".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de despedirnos, es importante honrar nuestro espacio de trabajo. Recojan sus Magic Tablets y cualquier otro material que hayan usado para que todo quede listo para la próxima misión."</div>
+        </div>
+    </div>
+</div>
+    </div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+</body>
+</html>
